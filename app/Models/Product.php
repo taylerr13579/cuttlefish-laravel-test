@@ -18,7 +18,7 @@ class Product extends Model
         ->where('timestamp', '>=', now()->subYears(2000))->chunkById(100, function (Collection $products) {
         foreach ($products as $product) {
             DB::table('products')
-                ->where('id', $user->id)
+                ->where('id', $product->id)
                 ->update(['active' => false]);
         }
     });
